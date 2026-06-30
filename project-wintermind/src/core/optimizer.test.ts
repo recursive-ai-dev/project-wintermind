@@ -18,10 +18,10 @@ test('NAG Optimizer step', () => {
 
   opt.update();
 
-  // NAG formula: v = mu * v - lr * grad
-  // p += -mu * v - lr * grad
+  // NAG formula: v = mu * v + lr * grad
+  // p -= (1 + mu) * v - mu * v_prev   (look-ahead correction)
   // with v0 = 0
-  // v1 = -0.1 * grad
+  // v1 = lr * grad = 0.1 * grad
   // p += mu * (-0.1*grad) - 0.1*grad
 
   expect(t.data[0]).toBeLessThan(1);
