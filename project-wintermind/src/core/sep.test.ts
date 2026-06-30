@@ -16,4 +16,8 @@ test('SEPModule analyze', () => {
 
   expect(result).toBeDefined();
   expect(result.delta).toBeDefined();
+  expect(result.fullPrediction.tokenStr).toBeDefined();
+  expect(result.attributions.length).toBeGreaterThan(0);
+  expect(result.calibratedConfidence).toBeGreaterThanOrEqual(0);
+  expect(result.calibratedConfidence).toBeLessThanOrEqual(1);
 });
