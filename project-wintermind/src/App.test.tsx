@@ -7,12 +7,12 @@ test('renders App and controls work', async () => {
 
   // start training
   const buttons = screen.getAllByRole('button');
-  const startButton = buttons.find(b => b.textContent?.includes('START'));
+  const startButton = buttons.find(b => b.textContent?.toLowerCase().includes('start'));
   expect(startButton).toBeDefined();
 
   fireEvent.click(startButton!);
   await waitFor(() => {
-    const stopButton = screen.getAllByRole('button').find(b => b.textContent?.includes('PAUSE'));
+    const stopButton = screen.getAllByRole('button').find(b => b.textContent?.toLowerCase().includes('stop'));
     expect(stopButton).toBeInTheDocument();
   });
 });

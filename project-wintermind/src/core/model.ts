@@ -271,8 +271,8 @@ export class WintermindModel {
     // Scale each by 1/T so the total gradient = ∇(mean loss).
     const invT = 1 / Math.max(T, 1);
     for (const l of lossTerms) {
-      if (!l.grad) l.grad = new Float32Array(1).fill(invT);
-      else         l.grad[0] = invT;
+      if (!l.grad) l.grad = new Float32Array([invT]);
+      else         l.grad[0] += invT;
       l.backward();
     }
 
