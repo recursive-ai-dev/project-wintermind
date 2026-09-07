@@ -247,7 +247,8 @@ export class Tensor {
     const result = makeTensor(new Float32Array([s]), [1], [this], `sum(${this.label})`);
     result._gradFn = () => {
       if (!this.requiresGrad) return;
-      const dIn = new Float32Array(this.size).fill(result.grad![0]);
+      const dIn = new Float32Array(this.size);
+      for (let i = 0; i < this.size; i++) dIn[i] = result.grad![0];
       this.accumulateGrad(dIn);
     };
     return result;
