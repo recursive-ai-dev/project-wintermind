@@ -3,3 +3,4 @@ release/
 dist/linux-unpacked/
 dist/
 node_modules/
+.audit/
